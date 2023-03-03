@@ -4,8 +4,21 @@ const TransactionModel = require("../models/TransactionModel");
 //@route GET/api/v1/transaction
 //access public
 
-exports.getTransactions = (req, res, next) => {
-  res.send("Get transactions");
+exports.getTransactions = async (req, res, next) => {
+  try {
+    const transactions = await TransactionModel.find();
+
+    return res.status(200).json({
+      success: true,
+      count: transactions.length,
+      data: transactions,
+    });
+  } catch (err) {
+    return res.send(500).json({
+      success: false,
+      error: "Server Error",
+    });
+  }
 };
 
 //@desc Add transactions
