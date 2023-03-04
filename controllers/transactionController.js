@@ -25,7 +25,7 @@ exports.getTransactions = async (req, res, next) => {
 //@route POST/api/v1/transaction
 //access public
 
-exports.addTransaction = (req, res, next) => {
+exports.addTransaction = async (req, res, next) => {
   res.send("POST transaction");
 };
 
@@ -33,6 +33,6 @@ exports.addTransaction = (req, res, next) => {
 //@route DELETE/api/v1/transaction
 //access public
 
-exports.deleteTransaction = (req, res, next) => {
+exports.deleteTransaction = async (req, res, next) => {
   res.send("DELETE transaction");
 };
