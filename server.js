@@ -12,6 +12,8 @@ const transactionRouter = require("./routes/transactionRoutes");
 
 const app = express();
 
+app.use(express.json());
+
 app.use("/api/v1/transaction", transactionRouter);
 
 const PORT = process.env.PORT || 5000;
