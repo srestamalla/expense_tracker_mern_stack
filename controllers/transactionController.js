@@ -64,8 +64,8 @@ exports.deleteTransaction = async (req, res, next) => {
         error: "No transactions found",
       });
     }
-    console.log(req.params.id);
-    transaction.remove();
+
+    await transaction.deleteOne(); //did not run when i used remove() method
 
     return res.status(200).json({
       success: true,
