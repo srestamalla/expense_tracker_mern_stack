@@ -14,7 +14,7 @@ exports.getTransactions = async (req, res, next) => {
       data: transactions,
     });
   } catch (err) {
-    return res.send(500).json({
+    return res.status(500).json({
       success: false,
       error: "Server Error",
     });
@@ -26,7 +26,16 @@ exports.getTransactions = async (req, res, next) => {
 //access public
 
 exports.addTransaction = async (req, res, next) => {
-  res.send("POST transaction");
+  try {
+    const { text, amount } = req.body;
+    const transaction = await TransactionModel.create(req.body);
+    return res.status(201).json({
+      success: true,
+      data: transaction,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 //@desc Delete transactions
